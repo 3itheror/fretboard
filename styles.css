@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap');
+
+:root {
+  --fretboard-height: 300;
+  --number-of-strings: 6;
+  --string-height: 10;
+  --half-string-height: calc(var(--string-height) / 2);
+  --string-top-position: calc(var(--fretboard-height) / var(--number-of-strings) / 2 - var(--half-string-height));
+  --double-fretmark-pos-one: calc(var(--fretboard-height) * 0.25);
+  --double-fretmark-pos-two: calc(var(--fretboard-height) * 0.75);
+  --noteDotOpacity: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: rgba(146, 146, 146, 0.9);
+  font-family: 'Cormorant', serif;
+}
+
+.settings {
+  font-family: 'Marcellus SC', serif;
+  font-size: .9em;;
+  display: flex;
+  color: #fff;
+  padding: 20px;
+  border-bottom: 1px solid #444;
+  background: rgba(37, 37, 37, 0.9);
+  max-height: 32px;
+}
+
+.instrument-select {
+  height: 30px;
+  width: auto;
+}
+
+.accidental-selector {
+  margin-left: 16px;
+  align-self: center;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+  opacity: 1;
+  height: 15px;
+}
+label {
+  margin: 0px 10px 0px 4px;
+  align-self: center;
+}
+
+.number-of-frets {
+  padding-left: 40px;
+  padding-right: 10px;
+  text-align: center;
+  align-self: center;
+}
+
+.show-all-notes {
+  padding-left: 40px;
+  align-self: center;
+}
+
+.show-same-notes {
+  padding-left: 40px;
+  align-self: center;
+  
+}
+
+.fretboard {
+  display: flex;
+  flex-direction: column;
+  background: #be975b;
+  width: 100%;
+  min-width: 1600px;
+  height: calc(var(--fretboard-height) * 1px);
+  margin-top: 50px;
+}
+
+.string {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+
+.string:before {
+  content: '';
+  width: 100%;
+  height: calc(var(--string-height) * 1px);
+  background: linear-gradient(#eee, #999);
+  box-shadow: 76px 3px 10px #806233;
+  z-index: 1;
+  position: absolute;
+  top: calc(var(--string-top-position) * 1px);
+}
+
+.note-fret {
+  display: flex;
+  flex: 1;
+  padding: 8px;
+  border-right: 10px solid;
+  border-image: linear-gradient(to left, #777, #bbb, #777) 1 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.note-fret:first-child {
+  background: #161717;
+  min-width: 36px;
+  border-right: 12px solid;
+  flex-grow: 0;
+  flex-shrink: 0;
+  border-image: linear-gradient( to left, #bbb, #fff, #bbb) 1 100%;
+}
+
+.note-fret:before {
+  content: attr(data-note);
+  width: 32px;
+  height: 33px;
+  border-radius: 50%;
+  line-height: 33px;
+  text-align: center;
+  background: teal;
+  z-index: 2;
+  color: #eee;
+  opacity: var(--noteDotOpacity);
+}
+
+.single-fretmark:after, .double-fretmark:before, .double-fretmark:after {
+  content: '';
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #806233;
+}
+
+.single-fretmark:after {
+
+  top: calc(var(--fretboard-height) / 2 * 1px);
+  transform: translate(0, -50%);
+}
+
+.double-fretmark:before {
+  top: calc(var(--double-fretmark-pos-one) * 1px);
+  transform: translate(-140%, -50%);
+}
+
+.double-fretmark:after {
+  top: calc(var(--double-fretmark-pos-two) * 1px);
+  transform: translate(-140%, -50%);
+}
+
+.note-name-section {
+  width: 100%;
+  color: #fff;
+  font-weight: 100;
+  font-size: 2.5em;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+
+}
+
+.note-name-section span {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.note-name-section span:hover {
+  color: rgb(59, 102, 119);
+}
