@@ -8,7 +8,7 @@ const showAllNotesSelector = document.querySelector('#show-all-notes');
 const showMultipleNotesSelector = document.querySelector('#show-same-notes');
 const noteNameSection = document.querySelector('.note-name-section');
 
-let sallNotes;
+let allNotes;
 let showMultipleNotes = false;
 let numberOfFrets = 12;
 
